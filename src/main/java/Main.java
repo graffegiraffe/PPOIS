@@ -1,4 +1,3 @@
-import main.java.FifteenPuzzle;
 import java.util.Scanner;
 
 public class Main {

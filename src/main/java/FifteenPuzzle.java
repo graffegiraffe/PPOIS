@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-package main.java;
+
 
 
     public class FifteenPuzzle {
@@ -44,7 +45,7 @@ package main.java;
             }
         }
 
-        private int[] findPosition(int tileValue) {
+        protected int[] findPosition(int tileValue) {
             for (int row = 0; row < size; row++) {
                 for (int col = 0; col < size; col++) {
                     if (board[row][col] == tileValue) {
