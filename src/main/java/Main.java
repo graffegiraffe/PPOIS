@@ -20,7 +20,7 @@ public class Main {
             }
         }
 
-        System.out.println("УРАААААААА");
+        System.out.println("Поздравляю, головоломка решена!");
         scanner.close();
     }
 }
