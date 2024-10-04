@@ -8,13 +8,13 @@ public class Main {
         int size = scanner.nextInt();
 
         FifteenPuzzle puzzle = new FifteenPuzzle(size);
-        puzzle.printBoard();
+        puzzle.printGameBoard();
 
-        while (!puzzle.isSolved()) {
+        while (!puzzle.decisionMade()) {
             System.out.print("Введите номер для перемещения: ");
             int tileToMove = scanner.nextInt();
-            if (puzzle.moveTile(tileToMove)) {
-                puzzle.printBoard();
+            if (puzzle.moveSpecificTile(tileToMove)) {
+                puzzle.printGameBoard();
             } else {
                 System.out.println("Невозможно выполнить ход");
             }

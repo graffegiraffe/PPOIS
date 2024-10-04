@@ -1,9 +1,6 @@
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
 
     public class FifteenPuzzle {
 
@@ -14,17 +11,16 @@ import java.util.List;
         public FifteenPuzzle(int size) {
             this.size = size;
             this.board = new int[size][size];
-            initializeBoard();
+            initializeGameBoard();
         }
 
-        protected void initializeBoard() {
+        protected void initializeGameBoard() {
             List<Integer> numbers = new ArrayList<>();
             for (int i = 1; i < size * size; i++) {
                 numbers.add(i);
             }
             numbers.add(EMPTY_CELL);
             Collections.shuffle(numbers);
-
             int index = 0;
             for (int row = 0; row < size; row++) {
                 for (int col = 0; col < size; col++) {
@@ -33,10 +29,10 @@ import java.util.List;
             }
         }
 
-        public boolean moveTile(int tileValue) {
-            int[] tilePosition = findPosition(tileValue);
-            int[] emptyPosition = findPosition(EMPTY_CELL);
-            if (isMoveValid(tilePosition, emptyPosition)) {
+        public boolean moveSpecificTile(int tileValue) {
+            int[] tilePosition = findSpecificPosition(tileValue);
+            int[] emptyPosition = findSpecificPosition(EMPTY_CELL);
+            if (canMoveValid(tilePosition, emptyPosition)) {
                 board[tilePosition[0]][tilePosition[1]] = EMPTY_CELL;
                 board[emptyPosition[0]][emptyPosition[1]] = tileValue;
                 return true;
@@ -45,7 +41,7 @@ import java.util.List;
             }
         }
 
-        protected int[] findPosition(int tileValue) {
+        protected int[] findSpecificPosition(int tileValue) {
             for (int row = 0; row < size; row++) {
                 for (int col = 0; col < size; col++) {
                     if (board[row][col] == tileValue) {
@@ -56,18 +52,16 @@ import java.util.List;
             return null;
         }
 
-        private boolean isMoveValid(int[] tilePosition, int[] emptyPosition) {
+        private boolean canMoveValid(int[] tilePosition, int[] emptyPosition) {
             if (tilePosition == null || emptyPosition == null) {
                 return false;
             }
-
             int rowDiff = Math.abs(tilePosition[0] - emptyPosition[0]);
             int colDiff = Math.abs(tilePosition[1] - emptyPosition[1]);
-
             return (rowDiff == 1 && colDiff == 0) || (rowDiff == 0 && colDiff == 1);
         }
 
-        public boolean isSolved() {
+        public boolean decisionMade() {
             int expectedValue = 1;
             for (int row = 0; row < size; row++) {
                 for (int col = 0; col < size; col++) {
@@ -83,7 +77,7 @@ import java.util.List;
             return true;
         }
 
-        public void printBoard() {
+        public void printGameBoard() {
             for (int row = 0; row < size; row++) {
                 for (int col = 0; col < size; col++) {
                     System.out.printf("%2d ", board[row][col]);

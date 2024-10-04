@@ -11,7 +11,7 @@ public class FifteenPuzzleTest {
    }
 
    @Test
-   public void testInitializeBoard() {
+   public void testInitializeGameBoard() {
 
        assertEquals(4, puzzle.board.length);
        assertEquals(4, puzzle.board[0].length);
@@ -29,7 +29,7 @@ public class FifteenPuzzleTest {
    }
 
    @Test
-   public void testMoveTileValid() {
+   public void testMoveSpecificTileValid() {
 
        int emptyRow = 0;
        int emptyCol = 0;
@@ -45,29 +45,29 @@ public class FifteenPuzzleTest {
 
        boolean moved = false;
        if (emptyRow > 0) {
-           moved = puzzle.moveTile(puzzle.board[emptyRow - 1][emptyCol]);
+           moved = puzzle.moveSpecificTile(puzzle.board[emptyRow - 1][emptyCol]);
        } else if (emptyCol > 0) {
-           moved = puzzle.moveTile(puzzle.board[emptyRow][emptyCol - 1]);
+           moved = puzzle.moveSpecificTile(puzzle.board[emptyRow][emptyCol - 1]);
        }
 
        assertTrue(moved);
    }
 
    @Test
-   public void testMoveTileInvalid() {
+   public void testMoveSpecificTileInvalid() {
 
-        assertFalse(puzzle.moveTile(-1)); // Невалидное значение
-        assertFalse(puzzle.moveTile(999)); // Вне диапазона
+        assertFalse(puzzle.moveSpecificTile(-1)); // Невалидное значение
+        assertFalse(puzzle.moveSpecificTile(999)); // Вне диапазона
     }
 
     @Test
-    public void testIsSolvedFalse() {
+    public void testDecisionMadeFalse() {
 
-        assertFalse(puzzle.isSolved());
+        assertFalse(puzzle.decisionMade());
     }
 
     @Test
-    public void testIsSolvedTrue() {
+    public void testDecisionMadeTrue() {
 
         for (int i = 0; i < puzzle.board.length; i++) {
             for (int j = 0; j < puzzle.board[i].length; j++) {
@@ -78,12 +78,12 @@ public class FifteenPuzzleTest {
                 }
             }
         }
-        assertTrue(puzzle.isSolved());
+        assertTrue(puzzle.decisionMade());
     }
 
    @Test
-   public void testFindPosition() {
-        int[] position = puzzle.findPosition(FifteenPuzzle.EMPTY_CELL);
+   public void testFindSpecificPosition() {
+        int[] position = puzzle.findSpecificPosition(FifteenPuzzle.EMPTY_CELL);
         assertNotNull(position);
         assertEquals(2, position.length); // Должен возвращать пару координат
     }
