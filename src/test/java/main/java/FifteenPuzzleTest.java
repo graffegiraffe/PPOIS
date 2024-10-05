@@ -56,8 +56,8 @@ public class FifteenPuzzleTest {
    @Test
    public void testMoveSpecificTileInvalid() {
 
-        assertFalse(puzzle.moveSpecificTile(-1)); // Невалидное значение
-        assertFalse(puzzle.moveSpecificTile(999)); // Вне диапазона
+        assertFalse(puzzle.moveSpecificTile(-1));
+        assertFalse(puzzle.moveSpecificTile(999));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class FifteenPuzzleTest {
    public void testFindSpecificPosition() {
         int[] position = puzzle.findSpecificPosition(FifteenPuzzle.EMPTY_CELL);
         assertNotNull(position);
-        assertEquals(2, position.length); // Должен возвращать пару координат
+        assertEquals(2, position.length);
     }
 
 }
