@@ -1,3 +1,5 @@
+package by.rublevskaya.taggame;
+
 import java.util.Scanner;
 
 public class Main {
