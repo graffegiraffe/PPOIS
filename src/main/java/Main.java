@@ -8,19 +8,27 @@ public class Main {
         int size = scanner.nextInt();
 
         FifteenPuzzle puzzle = new FifteenPuzzle(size);
-        puzzle.printGameBoard();
+        printGameBoard(puzzle.board);
 
         while (!puzzle.decisionMade()) {
             System.out.print("Введите номер для перемещения: ");
             int tileToMove = scanner.nextInt();
             if (puzzle.moveSpecificTile(tileToMove)) {
-                puzzle.printGameBoard();
+                printGameBoard(puzzle.board);
             } else {
                 System.out.println("Невозможно выполнить ход");
             }
         }
-
         System.out.println("Поздравляю, головоломка решена!");
         scanner.close();
+
+    }
+    public static void printGameBoard(int[][] board) {
+        for (int row = 0; row < board.length; row++) {
+            for (int col = 0; col < board[0].length; col++) {
+                System.out.printf("%2d ", board[row][col]);
+            }
+            System.out.println();
+        }
     }
 }

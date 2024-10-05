@@ -77,12 +77,4 @@ import java.util.List;
             return true;
         }
 
-        public void printGameBoard() {
-            for (int row = 0; row < size; row++) {
-                for (int col = 0; col < size; col++) {
-                    System.out.printf("%2d ", board[row][col]);
-                }
-                System.out.println();
-            }
         }
-    }
